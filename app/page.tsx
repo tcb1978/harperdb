@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { FC } from "react";
 
-export default async function Page() {
+const Page: FC = () => {
   return (
     <>
       <section>
@@ -22,4 +23,6 @@ export default async function Page() {
       </ul>
     </>
   );
-}
+};
+
+export default Page;
