@@ -1,8 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { CharacterType } from "../types";
 
-const SSECharacterListener = () => {
-  const [characters, setCharacters] = useState([]);
+
+const SSECharacterListener: FC = () => {
+  const [characters, setCharacters] = useState<CharacterType[]>([]);
 
   useEffect(() => {
     const es = new EventSource("/api/characters/stream");
@@ -26,9 +28,9 @@ const SSECharacterListener = () => {
         ) : (
           characters.map((data) => (
             <li key={data.id}>
-              <strong>{data.name}</strong> (ID: {data.refId})<br />
-              Type: {data.type}<br />
-              Created: {new Date(data.created).toLocaleString()}
+              <strong>{data.name}</strong> (ID: {data.refId ?? data.id})<br />
+              Type: {data.type ?? "N/A"}<br />
+              Created: {data.created ? new Date(data.created).toLocaleString() : "N/A"}
             </li>
           ))
         )}
