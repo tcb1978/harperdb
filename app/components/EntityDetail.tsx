@@ -40,7 +40,7 @@ const EntityDetail: React.FC<EntityDetailProps> = ({
       {children}
       {fields.map((field) => (
         <p key={field}>
-          {field[0].toUpperCase() + field.slice(1)}: {entity[field]}
+          {field[0].toUpperCase() + field.slice(1)}: {entity[field as keyof typeof entity]}
         </p>
       ))}
       <AddToFavoriteButton

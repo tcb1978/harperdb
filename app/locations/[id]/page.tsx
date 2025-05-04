@@ -9,6 +9,10 @@ type PageProps = {
 export default async function Page({ params }: PageProps) {
   const location = await getLocationById(params.id);
 
+  if (!location) {
+    return <p>Location not found</p>;
+  }
+
   return (
     <EntityDetail
       entity={location}

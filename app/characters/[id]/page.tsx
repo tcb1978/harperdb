@@ -10,6 +10,10 @@ type PageProps = {
 export default async function Page({ params }: PageProps) {
   const character = await getCharacterById(params.id);
 
+  if (!character) {
+    return <p>Character not found</p>;
+  }
+
   return (
     <EntityDetail
       entityType={EntityType.Character}

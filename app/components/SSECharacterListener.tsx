@@ -1,26 +1,14 @@
 "use client";
-import { FC, useEffect, useState } from "react";
-import { CharacterType } from "../types";
+import { FC } from "react";
+import { useSSECharacters } from "../hooks/useSSECharacters";
+import { Separator } from "./ui/separator";
 
 
 const SSECharacterListener: FC = () => {
-  const [characters, setCharacters] = useState<CharacterType[]>([]);
-
-  useEffect(() => {
-    const es = new EventSource("/api/characters/stream");
-    es.onmessage = (event) => {
-      try {
-        const data = JSON.parse(event.data);
-        setCharacters(Array.isArray(data) ? data : []);
-      } catch {
-        setCharacters([]);
-      }
-    };
-    return () => es.close();
-  }, []);
+  const characters = useSSECharacters();
 
   return (
-    <div>
+    <>
       <h3>Live Character Stream (SSE)</h3>
       <ul>
         {characters.length === 0 ? (
@@ -35,7 +23,8 @@ const SSECharacterListener: FC = () => {
           ))
         )}
       </ul>
-    </div>
+      <Separator />
+    </>
   );
 };
 
