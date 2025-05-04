@@ -1,0 +1,24 @@
+{
+  "name": "next-harperdb",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "seed": "node seed.js",
+    "dev": "harperdb-nextjs dev",
+    "build": "harperdb-nextjs build",
+    "start": "harperdb-nextjs start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@harperdb/nextjs": "^0.0.2",
+    "harperdb": "^4.3.21",
+    "next": "^14.2.7",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/react": "^19.1.2",
+    "typescript": "^5.8.3"
+  }
+}

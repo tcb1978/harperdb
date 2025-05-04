@@ -1,0 +1,43 @@
+type Character @table @export {
+  id: ID @primaryKey
+  name: String @indexed
+  status: String
+  species: String
+  type: String
+  gender: String
+  origin: JSON
+  location: JSON
+  image: String
+  episode: [String]
+  url: String
+  created: String
+}
+
+type Location @table @export {
+  id: ID @primaryKey
+  name: String @indexed
+  type: String
+  dimension: String
+  residents: [String]
+  url: String
+  created: String
+}
+
+type Episode @table @export {
+  id: ID @primaryKey
+  name: String @indexed
+  air_date: String
+  episode: String
+  characters: [String]
+  url: String
+  created: String
+}
+
+type Favorite @table @export {
+  id: ID @primaryKey
+  type: String @indexed # "character", "location", or "episode"
+  refId: String @indexed # id of the favorited item
+  name: String
+  rating: Int
+  created: String
+}

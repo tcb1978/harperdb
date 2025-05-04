@@ -1,0 +1,12 @@
+graphqlSchema:
+  files: '*.graphql'
+jsResource:
+  files: './resources.js'
+'@harperdb/nextjs':
+  package: '@harperdb/nextjs'
+  files: '/*'
+users:
+  admin:
+    password: $2a$10$hpIMCiMnaEpwG673Zvv01.Jty/o2WFCNgJV4Ke7gyU3nVeSHZln6m
+authentication:
+  authorizeLocal: true
