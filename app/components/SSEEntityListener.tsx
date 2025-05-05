@@ -16,10 +16,10 @@ const SSEEntityListener: FC<SSEEntityListenerProps> = ({
   const entities = useSSEEntities(entityType);
 
   return (
-    <div className=''>
+    <div className="flex flex-col">
       {entities.length > 0 && (
         <>
-          <h3 className="text-amber-300">Live {title ?? entityType.charAt(0).toUpperCase() + entityType.slice(1)} Stream (SSE)</h3>
+          <h3 className=" text-amber-300">Live {title ?? entityType.charAt(0).toUpperCase() + entityType.slice(1)} Stream (SSE)</h3>
           <Separator className="my-4" />
         </>
       )}
