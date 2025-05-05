@@ -1,25 +1,31 @@
+import { notFound } from "next/navigation";
+import React, { Suspense } from "react";
 import { getEpisodeById } from "../../actions";
-import EntityDetail from "../../components/EntityDetail";
 import { EntityBackPath, EntityRedirectPath, EntityType } from "../../enums";
+import { EpisodeType } from "../../types";
+
+const EntityDetail = React.lazy(() => import("../../components/EntityDetail"));
 
 type PageProps = {
   params: { id: string; };
 };
 
-export default async function Page({ params }: PageProps) {
-  const episode = await getEpisodeById(params.id);
+export default async function Page({ params: { id } }: PageProps) {
+  const episode: EpisodeType | null = await getEpisodeById(id);
 
   if (!episode) {
-    return <p>Episode not found</p>;
+    notFound();
   }
 
   return (
-    <EntityDetail
-      entityType={EntityType.Episode}
-      entity={episode}
-      backPath={EntityBackPath.Episodes}
-      fields={["air_date", "episode"]}
-      redirectPath={EntityRedirectPath.Episodes}
-    />
+    <Suspense fallback={<div>Loading details...</div>}>
+      <EntityDetail
+        entityType={EntityType.Episode}
+        entity={episode}
+        backPath={EntityBackPath.Episodes}
+        fields={["air_date", "episode"]}
+        redirectPath={EntityRedirectPath.Episodes}
+      />
+    </Suspense>
   );
 }

@@ -1,4 +1,5 @@
 "use client";
+import { notFound } from "next/navigation";
 import { FC } from "react";
 import { useSSEEntities } from "../hooks/useSSEEntities";
 import JsonIDEBlock from "./JsonIDEBlock";
@@ -9,11 +10,14 @@ type SSEEntityListenerProps = {
   title?: string;
 };
 
-const SSEEntityListener: FC<SSEEntityListenerProps> = ({ entityType, title }) => {
+const SSEEntityListener: FC<SSEEntityListenerProps> = ({
+  entityType,
+  title
+}) => {
   const entities = useSSEEntities(entityType);
 
   if (!entities) {
-    return null;
+    notFound();
   }
 
   return (

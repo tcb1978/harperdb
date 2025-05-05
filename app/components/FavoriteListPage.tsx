@@ -12,6 +12,7 @@ type FavoriteListPageProps = {
   routeBase: EntityBasePath.Characters | EntityBasePath.Locations | EntityBasePath.Episodes;
 };
 
+
 const FavoriteListPage: FC<FavoriteListPageProps> = async ({
   apiUrl,
   title,
@@ -31,7 +32,7 @@ const FavoriteListPage: FC<FavoriteListPageProps> = async ({
       )}
       {!!items && items?.length > 0 && (
         <>
-          <h1 className="text-2xl font-bold text-amber-300 py-4">Favorite {title}</h1>
+          <h1 className="py-4 text-2xl font-bold text-amber-300">Favorite {title}</h1>
           <ScrollArea className="h-80 max-h-[60vh] w-full rounded-md border p-4 bg-gray-800">
             <ul>
               {items.map((item) => (

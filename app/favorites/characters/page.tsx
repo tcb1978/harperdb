@@ -1,12 +1,16 @@
-import FavoriteListPage from "../../components/FavoriteListPage";
+import React, { Suspense } from "react";
+import { DOMAIN_URL } from "../../constants";
 import { EntityBasePath, EntityTitle } from "../../enums";
+const FavoriteListPage = React.lazy(() => import("../../components/FavoriteListPage"));
 
-export default async function Page() {
+export default function Page() {
   return (
-    <FavoriteListPage
-      apiUrl="http://localhost:3000/api/favorites/characters"
-      title={EntityTitle.Characters}
-      routeBase={EntityBasePath.Characters}
-    />
+    <Suspense fallback={<div>Loading favorites...</div>}>
+      <FavoriteListPage
+        apiUrl={`${DOMAIN_URL}/api/favorites/characters`}
+        title={EntityTitle.Characters}
+        routeBase={EntityBasePath.Characters}
+      />
+    </Suspense>
   );
 }
