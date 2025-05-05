@@ -3,7 +3,7 @@ import {
   listCharacters,
 } from "../app/actions";
 
-// --- Mocks ---
+
 const mockCharacters = [
   {
     id: "1",
@@ -52,7 +52,6 @@ jest.mock("harperdb", () => ({
   },
 }));
 
-// --- Tests ---
 describe("actions - listCharacters", () => {
   it("should return an array of CharacterType objects when characters exist in the database", async () => {
     const result = await listCharacters();
