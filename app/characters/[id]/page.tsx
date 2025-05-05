@@ -1,5 +1,7 @@
 import { getCharacterById } from "../../actions";
 import EntityDetail from "../../components/EntityDetail";
+import { Avatar, AvatarFallback, AvatarImage } from "../../components/ui/avatar";
+import { Label } from "../../components/ui/label";
 import { EntityBackPath, EntityRedirectPath, EntityType } from "../../enums";
 
 
@@ -15,19 +17,23 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <EntityDetail
-      entityType={EntityType.Character}
-      entity={character}
-      backPath={EntityBackPath.Characters}
-      fields={["status", "species", "type", "gender"]}
-      redirectPath={EntityRedirectPath.Characters}
-    >
-      <p>
-        <img src={character.image} alt={character.name} />
-      </p>
-      <p>Origin: {character.origin?.name}</p>
-      <p>Location: {character.location?.name}</p>
-      <p>Created: {new Date(character.created).toLocaleDateString()}</p>
-    </EntityDetail>
+    <>
+      <EntityDetail
+        entityType={EntityType.Character}
+        entity={character}
+        backPath={EntityBackPath.Characters}
+        fields={["status", "species", "type", "gender"]}
+        redirectPath={EntityRedirectPath.Characters}
+      >
+        <Avatar>
+          <AvatarImage src={character.image} alt={character.name} />
+          <AvatarFallback>character.name</AvatarFallback>
+        </Avatar>
+
+        <Label>Origin: {character.origin?.name}</Label>
+        <Label>Location: {character.location?.name}</Label>
+        <Label>Created: {new Date(character.created).toLocaleDateString()}</Label>
+      </EntityDetail>
+    </>
   );
 }

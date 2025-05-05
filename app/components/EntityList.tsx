@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { EntityBasePath, EntityTitle } from "../enums";
 import { CharacterType, EpisodeType, LocationType } from "../types";
+import { ScrollArea } from "./ui/scroll-area";
 
 type EntityListProps = {
   title: EntityTitle;
@@ -14,19 +15,15 @@ const EntityList: React.FC<EntityListProps> = ({
   basePath
 }) => {
   return (
-    <section>
-      <p>
-        <Link href="/">Back to home</Link>
-      </p>
-      <h1>{title}</h1>
+    <ScrollArea className="h-80 max-h-[60vh] w-full rounded-md border p-4 bg-gray-800">
       <ul>
         {items.map((item) => (
-          <li key={item.id}>
+          <li key={item.id} className="text-white hover:text-amber-300 transition-colors">
             <Link href={`/${basePath}/${item.id}`}>{item.name}</Link>
           </li>
         ))}
       </ul>
-    </section>
+    </ScrollArea>
   );
 };
 

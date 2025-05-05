@@ -6,10 +6,15 @@ import { CharacterType } from "../types";
 export default async function Page() {
   const characters: CharacterType[] = await listCharacters();
   return (
-    <EntityList
-      title={EntityTitle.Characters}
-      items={characters}
-      basePath={EntityBasePath.Characters}
-    />
+    <>
+      <h1 className="text-2xl font-bold text-amber-300 py-4">
+        {EntityTitle.Characters}
+      </h1>
+      <EntityList
+        title={EntityTitle.Characters}
+        items={characters}
+        basePath={EntityBasePath.Characters}
+      />
+    </>
   );
 }

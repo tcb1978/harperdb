@@ -1,47 +1,54 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { FC } from "react";
 import { EntityBackPath, EntityTitle } from "../enums";
-import { ModeToggle } from "./mode-toggle";
+import BreadcrumbWithCustomSeparator from "./BreadcrumbWithCustomSeparator";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuList,
 } from "./ui/navigation-menu";
 
-const Navigation: FC = () => {
-  return (
-    <NavigationMenu>
-      <NavigationMenuList className="flex gap-6 RIGHTHERE">
-        <NavigationMenuItem>
-          <Link
-            href={EntityBackPath.Characters}
-            className="text-lg font-semibold text-primary-background hover:text-amber-300 transition-colors"
-          >
-            {EntityTitle.Characters}
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link
-            href={EntityBackPath.Locations}
-            className="text-lg font-semibold text-primary-background hover:text-amber-300 transition-colors"
-          >
-            {EntityTitle.Locations}
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link
-            href={EntityBackPath.Episodes}
-            className="text-lg font-semibold text-primary-background hover:text-amber-300 transition-colors"
-          >
-            {EntityTitle.Episodes}
-          </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <ModeToggle />
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+const NAV_LINKS = [
+  { label: EntityTitle.Characters, href: EntityBackPath.Characters },
+  { label: EntityTitle.Locations, href: EntityBackPath.Locations },
+  { label: EntityTitle.Episodes, href: EntityBackPath.Episodes },
+];
 
+const Navigation: FC = () => {
+  const pathname = usePathname();
+  const segments = pathname.split("/").filter(Boolean);
+  const breadcrumbs = [
+    { label: EntityTitle.Home, href: EntityBackPath.Home },
+    ...segments.map((seg, idx) => {
+      const nav = NAV_LINKS.find((n) => n.href.replace("/", "") === seg);
+      const label = nav ? nav.label : decodeURIComponent(seg);
+      const href = "/" + segments.slice(0, idx + 1).join("/");
+      return idx < segments.length - 1
+        ? { label, href }
+        : { label };
+    }),
+  ];
+
+  return (
+    <>
+      <NavigationMenu>
+        <NavigationMenuList className="flex gap-6">
+          {NAV_LINKS.map((nav) => (
+            <NavigationMenuItem key={nav.href}>
+              <Link
+                href={nav.href}
+                className="text-lg font-semibold text-white hover:text-amber-300 transition-colors"
+              >
+                {nav.label}
+              </Link>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+      <BreadcrumbWithCustomSeparator items={breadcrumbs} />
+    </>
   );
 };
 

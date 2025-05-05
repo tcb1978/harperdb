@@ -11,6 +11,7 @@ export enum EntityType {
 }
 
 export enum EntityTitle {
+  Home = "Home",
   Characters = "Characters",
   Locations = "Locations",
   Episodes = "Episodes",
@@ -23,6 +24,7 @@ export enum EntityBasePath {
 }
 
 export enum EntityBackPath {
+  Home =  "/",
   Characters = "/characters",
   Locations = "/locations",
   Episodes = "/episodes",

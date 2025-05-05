@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { FC, ReactNode } from "react";
 import { EntityBasePath, EntityRedirectPath } from "../enums";
 import { CharacterType, EpisodeType, LocationType } from "../types";
+import { Button } from "./ui/button";
 
 type GenericFavoriteButtonProps = {
   id: CharacterType["refId"] | LocationType["refId"] | EpisodeType["refId"];
@@ -11,6 +12,7 @@ type GenericFavoriteButtonProps = {
   redirectTo: EntityRedirectPath.Characters | EntityRedirectPath.Locations | EntityRedirectPath.Episodes;
   method: "POST" | "DELETE";
   children: ReactNode;
+  variant?: "default" | "destructive";
 };
 
 const GenericFavoriteButton: FC<GenericFavoriteButtonProps> = ({
@@ -45,9 +47,14 @@ const GenericFavoriteButton: FC<GenericFavoriteButtonProps> = ({
   };
 
   return (
-    <button onClick={handleFavorite} aria-label={`${children} ${name} to favorites`}>
+    <Button
+      className="w-full"
+      onClick={handleFavorite}
+      aria-label={`${children} ${name} to favorites`}
+      variant={method === "POST" ? "default" : "destructive"}
+    >
       {children}
-    </button>
+    </Button>
   );
 };
 
