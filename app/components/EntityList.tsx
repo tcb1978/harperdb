@@ -16,9 +16,13 @@ const EntityList: React.FC<EntityListProps> = ({
 }) => {
   return (
     <ScrollArea className="h-80 max-h-[60vh] w-full rounded-md border p-4 bg-gray-800">
-      <ul>
+      <ul role="list">
         {items.map((item) => (
-          <li key={item.id} className="text-white transition-colors hover:text-amber-300">
+          <li
+            key={item.id}
+            className="text-white transition-colors hover:text-amber-300"
+            role="listitem"
+          >
             <Link
               href={`/${basePath}/${item.id}`}
               aria-label={`Link to ${title} ${item.name}`}
