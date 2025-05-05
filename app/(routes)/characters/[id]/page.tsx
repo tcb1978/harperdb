@@ -1,5 +1,5 @@
 export const dynamic = "force-dynamic";
-import CharacterByIDPage from "../../../components/page/CharacterByIDPage";
+import CharacterByIDPage from "../../../components/page/id/CharacterByIDPage";
 
 type PageProps = {
   params: { id: string; };
