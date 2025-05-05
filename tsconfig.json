@@ -12,7 +12,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/(routes)/episodes/layout.tsx.bak", "app/api/(routes)/locations/layout.tsx.bak", "app/api/(routes)/characters/layout.tsx.bak"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/(routes)/episodes/layout.tsx.bak", "app/api/(routes)/locations/layout.tsx.bak", "app/api/(routes)/characters/layout.tsx.bak", "jest.config.js"],
   "exclude": ["node_modules"]
 }
