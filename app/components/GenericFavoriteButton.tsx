@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, useCallback, useState } from "react";
 import { EntityBasePath, EntityRedirectPath } from "../enums";
 import { CharacterType, EpisodeType, LocationType } from "../types";
 import { Button } from "./ui/button";
@@ -22,10 +22,13 @@ const GenericFavoriteButton: FC<GenericFavoriteButtonProps> = ({
   redirectTo,
   method,
   children,
+  variant,
 }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
-  const handleFavorite = async () => {
+  const handleFavorite = useCallback(async () => {
+    setLoading(true);
     try {
       const res = await fetch(`/api/favorites/${whichFavorite}`, {
         method,
@@ -39,19 +42,21 @@ const GenericFavoriteButton: FC<GenericFavoriteButtonProps> = ({
     } catch (err) {
       console.error(`Error updating favorites: ${err}`);
     } finally {
+      setLoading(false);
       if (redirectTo) {
         router.push(redirectTo);
         router.refresh();
       }
     }
-  };
+  }, [id, name, whichFavorite, redirectTo, method, router]);
 
   return (
     <Button
       className="w-full"
       onClick={handleFavorite}
       aria-label={`${children} ${name} to favorites`}
-      variant={method === "POST" ? "default" : "destructive"}
+      variant={variant ?? (method === "POST" ? "default" : "destructive")}
+      disabled={loading}
     >
       {children}
     </Button>
