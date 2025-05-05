@@ -18,8 +18,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - HARPERDB_URL=http://harperdb:9925
-      - HARPERDB_AUTH=Basic YWRtaW46YWRtaW4=
+      - HARPERDB_URL=${HARPERDB_URL}
+      - HARPERDB_AUTH=${HARPERDB_AUTH}
     depends_on:
       - harperdb
 
