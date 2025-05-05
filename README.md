@@ -65,7 +65,7 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 🛠️ My Custom Harper Resource Endpoint
+## My Custom Harper Resource Endpoint
 
 I created a custom endpoint that:
 - Fetches local character data from HarperDB.
