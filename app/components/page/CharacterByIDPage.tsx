@@ -1,16 +1,18 @@
+export const dynamic = "force-dynamic";
 import { getCharacterById } from "actions";
 import EntityDetail from "components/EntityDetail";
 import { Avatar, AvatarFallback, AvatarImage } from "components/ui/avatar";
 import { Label } from "components/ui/label";
 import { BackPath, EntityType, RedirectPath } from "enums";
 import { notFound } from "next/navigation";
+import { FC } from "react";
 import { CharacterType } from "types";
 
-type CharacterPageProps = {
+type CharacterByIDPageProps = {
   id: string;
 };
 
-export default async function CharacterPage({ id }: CharacterPageProps) {
+const CharacterByIDPage: FC<CharacterByIDPageProps> = async ({ id }) => {
   const character: CharacterType | null = await getCharacterById(id);
 
   if (!character) {
@@ -44,4 +46,6 @@ export default async function CharacterPage({ id }: CharacterPageProps) {
       <Label>Created: {new Date(character.created).toLocaleDateString()}</Label>
     </EntityDetail>
   );
-}
+};
+
+export default CharacterByIDPage;
