@@ -18,8 +18,13 @@ const EntityList: React.FC<EntityListProps> = ({
     <ScrollArea className="h-80 max-h-[60vh] w-full rounded-md border p-4 bg-gray-800">
       <ul>
         {items.map((item) => (
-          <li key={item.id} className="text-white hover:text-amber-300 transition-colors">
-            <Link href={`/${basePath}/${item.id}`}>{item.name}</Link>
+          <li key={item.id} className="text-white transition-colors hover:text-amber-300">
+            <Link
+              href={`/${basePath}/${item.id}`}
+              aria-label={`Link to ${title} ${item.name}`}
+            >
+              {item.name}
+            </Link>
           </li>
         ))}
       </ul>

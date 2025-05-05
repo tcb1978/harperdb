@@ -27,7 +27,11 @@ const GroovyCarousel = ({ characters }: GroovyCarouselProps) => {
             <div className="p-1">
               <Card>
                 <CardContent className="flex flex-col items-center justify-center p-4">
-                  <Link href={`/characters/${character.id}`} className="flex flex-col items-center group">
+                  <Link
+                    href={`/characters/${character.id}`}
+                    className="flex flex-col items-center group"
+                    aria-label={`Link to character ${character.name}`}
+                  >
                     <Image
                       src={character.image}
                       alt={character.name}
