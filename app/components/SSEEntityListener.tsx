@@ -16,16 +16,22 @@ const SSEEntityListener: FC<SSEEntityListenerProps> = ({
   const entities = useSSEEntities(entityType);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-testid="sse-entity-listener">
       {entities.length > 0 && (
         <>
-          <h3 className=" text-amber-300">Live {title ?? entityType.charAt(0).toUpperCase() + entityType.slice(1)} Stream (SSE)</h3>
-          <Separator className="my-4" />
+          <h3
+            className="text-amber-300"
+            data-testid="sse-entity-listener-title"
+          >
+            Live {title ?? entityType.charAt(0).toUpperCase() + entityType.slice(1)} Stream (SSE)
+          </h3>
+          <Separator className="my-4" data-testid="sse-entity-listener-separator" />
         </>
       )}
       <JsonIDEBlock
         data={entities}
         emptyMessage={`No favorite ${entityType}`}
+        data-testid="sse-entity-listener-json"
       />
     </div>
   );

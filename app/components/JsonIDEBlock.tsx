@@ -21,7 +21,7 @@ type JsonIDEBlockProps = {
 };
 
 const JsonIDEBlock: FC<JsonIDEBlockProps> = ({ data, emptyMessage, style }) => (
-  <div style={{ ...defaultJsonStyles, ...style }}>
+  <div style={{ ...defaultJsonStyles, ...style }} data-testid="sse-entity-listener-json">
     <ScrollArea className="max-h-[230px] h-2/6 w-full pl-4">
       {Array.isArray(data) && data.length === 0 ? (
         <span style={{ color: "#6a9955" }}>{emptyMessage ?? "No data"}</span>
