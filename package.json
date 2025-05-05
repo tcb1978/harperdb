@@ -5,9 +5,12 @@
   "scripts": {
     "seed": "node seed.js",
     "dev": "harperdb-nextjs dev",
-    "build": "harperdb-nextjs build",
-    "start": "harperdb-nextjs start",
-    "lint": "next lint"
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "docker:build": "docker build -t next-harperdb-app .",
+    "docker:run": "docker run -p 3000:3000 --env-file .env next-harperdb-app",
+    "build:css": "tailwindcss -i ./app/css/styles.css -o ./app/css/output.css --watch"
   },
   "dependencies": {
     "@harperdb/nextjs": "^0.0.2",

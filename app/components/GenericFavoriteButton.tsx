@@ -8,8 +8,8 @@ import { Button } from "./ui/button";
 type GenericFavoriteButtonProps = {
   id: CharacterType["refId"] | LocationType["refId"] | EpisodeType["refId"];
   name: CharacterType["name"] | LocationType["name"] | EpisodeType["name"];
-  whichFavorite: EntityBasePath.Characters | EntityBasePath.Locations | EntityBasePath.Episodes;
-  redirectTo: EntityRedirectPath.Characters | EntityRedirectPath.Locations | EntityRedirectPath.Episodes;
+  whichFavorite: (typeof EntityBasePath)[keyof typeof EntityBasePath];
+  redirectTo: (typeof EntityRedirectPath)[keyof typeof EntityRedirectPath];
   method: "POST" | "DELETE";
   children: ReactNode;
   variant?: "default" | "destructive";

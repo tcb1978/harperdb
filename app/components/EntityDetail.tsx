@@ -19,10 +19,10 @@ import { Label } from "./ui/label";
 
 type EntityDetailProps = {
   entity: CharacterType | EpisodeType | LocationType | null;
-  entityType: EntityType.Character | EntityType.Location | EntityType.Episode;
-  backPath: EntityBackPath.Characters | EntityBackPath.Locations | EntityBackPath.Episodes;
+  entityType: typeof EntityType.Character | typeof EntityType.Location | typeof EntityType.Episode;
+  backPath: typeof EntityBackPath.Characters | typeof EntityBackPath.Locations | typeof EntityBackPath.Episodes;
   fields: string[];
-  redirectPath: EntityRedirectPath.Characters | EntityRedirectPath.Locations | EntityRedirectPath.Episodes;
+  redirectPath: typeof EntityRedirectPath.Characters | typeof EntityRedirectPath.Locations | typeof EntityRedirectPath.Episodes;
   children?: React.ReactNode;
 };
 
@@ -36,8 +36,7 @@ const EntityDetail: React.FC<EntityDetailProps> = ({
 }) => {
   if (!entity) return <p>{entityType} not found.</p>;
 
-
-  const entityTypeToBasePath: Record<EntityType, EntityBasePath> = {
+  const entityTypeToBasePath: Record<typeof EntityType[keyof typeof EntityType], typeof EntityBasePath[keyof typeof EntityBasePath]> = {
     [EntityType.Character]: EntityBasePath.Characters,
     [EntityType.Location]: EntityBasePath.Locations,
     [EntityType.Episode]: EntityBasePath.Episodes,
@@ -75,8 +74,10 @@ const EntityDetail: React.FC<EntityDetailProps> = ({
           <Button variant="outline" className="mt-2">
             <Link
               href={backPath}
-              aria-label={`Back to ${entityType}s`
-              }>Back to {entityType}s</Link>
+              aria-label={`Back to ${entityType}s`}
+            >
+              Back to {entityType}s
+            </Link>
           </Button>
         </div>
       </CardFooter>

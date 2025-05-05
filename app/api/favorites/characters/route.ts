@@ -1,2 +1,3 @@
-import { createFavoriteHandlers } from "../genericFavoriteHandler";
-export const { POST, GET, DELETE } = createFavoriteHandlers("character");
+import { genericFavoriteHandler } from "../../_handlers/genericFavoriteHandler";
+
+export const { POST, GET, DELETE } = genericFavoriteHandler("character");

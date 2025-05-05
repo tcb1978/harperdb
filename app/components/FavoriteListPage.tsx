@@ -8,8 +8,8 @@ import { ScrollArea } from "./ui/scroll-area";
 
 type FavoriteListPageProps = {
   apiUrl: string;
-  title: EntityTitle.Characters | EntityTitle.Locations | EntityTitle.Episodes;
-  routeBase: EntityBasePath.Characters | EntityBasePath.Locations | EntityBasePath.Episodes;
+  title: typeof EntityTitle.Characters | typeof EntityTitle.Locations | typeof EntityTitle.Episodes;
+  routeBase: typeof EntityBasePath.Characters | typeof EntityBasePath.Locations | typeof EntityBasePath.Episodes;
 };
 
 

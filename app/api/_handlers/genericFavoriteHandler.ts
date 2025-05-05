@@ -5,7 +5,9 @@ const HDB_URL = process.env.HARPERDB_URL as string;
 const HDB_AUTH = process.env.HARPERDB_AUTH as string;
 const headers = HEADERS;
 
-export const createFavoriteHandlers = (type: "character" | "location" | "episode") => {
+
+// If this had diverse logic, I would not use a single functio for this. I would create a separate file for each type of favorite.
+export const genericFavoriteHandler = (type: "character" | "location" | "episode") => {
   return {
     async POST(req: Request) {
       try {

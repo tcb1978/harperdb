@@ -4,9 +4,9 @@ import { CharacterType, EpisodeType, LocationType } from "../types";
 import { ScrollArea } from "./ui/scroll-area";
 
 type EntityListProps = {
-  title: EntityTitle;
+  title: typeof EntityTitle[keyof typeof EntityTitle];
   items: EpisodeType[] | CharacterType[] | LocationType[];
-  basePath: EntityBasePath;
+  basePath: typeof EntityBasePath[keyof typeof EntityBasePath];
 };
 
 const EntityList: React.FC<EntityListProps> = ({

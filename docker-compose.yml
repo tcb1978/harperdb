@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  harperdb:
+    image: harperdb/harperdb:latest
+    container_name: harperdb
+    ports:
+      - "9925:9925"
+    volumes:
+      - ./config.yaml:/opt/harperdb/config/config.yaml
+      - hdb_data:/opt/harperdb/hdb
+    environment:
+      - HDB_ADMIN_USERNAME=admin
+      - HDB_ADMIN_PASSWORD=admin
+
+  nextjs:
+    build: .
+    container_name: nextjs-app
+    ports:
+      - "3000:3000"
+    environment:
+      - HARPERDB_URL=http://harperdb:9925
+      - HARPERDB_AUTH=Basic YWRtaW46YWRtaW4=
+    depends_on:
+      - harperdb
+
+volumes:
+  hdb_data:

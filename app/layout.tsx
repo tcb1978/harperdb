@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import DynamicSSEEntityListener from "./components/DynamicSSEEntityListener";
 import Navigation from "./components/Navigation";
-import "./output.css";
+import "./css/output.css";
 
 
 export const metadata = {
