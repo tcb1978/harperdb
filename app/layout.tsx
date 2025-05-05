@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => (
       <div className="bg-black grid items-center justify-items-center min-h-screen gap-2 p-20 font-[family-name:var(--font-geist-sans)] ">
         <Navigation />
         <main>
-          <div className="flex xs:flex-col lg:flex-row items-center justify-center w-full max-w-4xl">
+          <div className="flex xs:flex-col lg:flex-row items-center justify-center w-full max-w-4xl gap-4">
             <section>{children}</section>
             <div className="flex flex-col gap-4">
               <DynamicSSEEntityListener />

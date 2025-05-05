@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -24,8 +23,11 @@ const BreadcrumbWithCustomSeparator = ({ items }: BreadcrumbWithCustomSeparatorP
         <span key={item.label} className="flex items-center">
           <BreadcrumbItem>
             {item.href ? (
-              <BreadcrumbLink>
-                <Link className="text-white hover:text-amber-300 transition-colors" href={item.href}>{item.label}</Link>
+              <BreadcrumbLink
+                href={item.href}
+                className="text-white hover:text-amber-300 transition-colors"
+              >
+                {item.label}
               </BreadcrumbLink>
             ) : (
               <BreadcrumbPage>{item.label}</BreadcrumbPage>

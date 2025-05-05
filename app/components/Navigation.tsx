@@ -16,13 +16,17 @@ const NAV_LINKS = [
   { label: EntityTitle.Episodes, href: EntityBackPath.Episodes },
 ];
 
+const IGNORED_SEGMENTS = ["favorites"];
+
 const Navigation: FC = () => {
   const pathname = usePathname();
-  const segments = pathname.split("/").filter(Boolean);
+  const segments = pathname.split("/").filter(
+    (seg) => seg && !IGNORED_SEGMENTS.includes(seg)
+  );
   const breadcrumbs = [
     { label: EntityTitle.Home, href: EntityBackPath.Home },
     ...segments.map((seg, idx) => {
-      const nav = NAV_LINKS.find((n) => n.href.replace("/", "") === seg);
+      const nav = NAV_LINKS.find((item) => item.href.replace("/", "") === seg);
       const label = nav ? nav.label : decodeURIComponent(seg);
       const href = "/" + segments.slice(0, idx + 1).join("/");
       return idx < segments.length - 1
