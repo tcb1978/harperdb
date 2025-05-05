@@ -20,7 +20,7 @@ const FavoriteListPage: FC<FavoriteListPageProps> = async ({
 }) => {
   const res = await fetch(apiUrl, { cache: "no-store" });
   const data: EntityType = await res.json();
-  const items = Array.isArray(data) ? data : data?.data;
+  const items = Array.isArray(data) ? data : data?.data ?? [];
 
   if (!items?.length) {
     return (
