@@ -1,16 +1,9 @@
 export const dynamic = "force-dynamic";
 import { listEpisodes } from "actions";
-import EntityList from "components/EntityList";
-import { BasePath, Title } from "enums";
 import { EpisodeType } from "types";
+import EpisodesLandingPage from "../../components/page/EpisodesLandingPage";
 
 export default async function Page() {
   const episodes: EpisodeType[] = await listEpisodes();
-  return (
-    <EntityList
-      title={Title.Episodes}
-      items={episodes}
-      basePath={BasePath.Episodes}
-    />
-  );
+  return <EpisodesLandingPage />;
 }
