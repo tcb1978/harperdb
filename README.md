@@ -80,7 +80,7 @@ This approach lets HarperDB act as a flexible data layer, merging internal and e
 
 ## Harper Resource Class (`resources.ts`)
 
-The core logic for combining local HarperDB data with external data from the Rick & Morty API is implemented in my Harper Resource class, which you’ll find at:
+The core logic for combining local HarperDB data with external data from the Rick & Morty API is implemented in my Harper Resource class.
 
 ---
 
