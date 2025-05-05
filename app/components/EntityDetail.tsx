@@ -49,7 +49,7 @@ const EntityDetail: React.FC<EntityDetailProps> = ({
         <CardTitle>{entity.name}</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="grid w-full items-center gap-4">
+        <div className="grid items-center w-full gap-4">
           <div className="flex flex-col space-y-1.5">
             {children}
             {fields.map((field) => (
@@ -73,7 +73,10 @@ const EntityDetail: React.FC<EntityDetailProps> = ({
             Add {entity.name}
           </GenericFavoriteButton>
           <Button variant="outline" className="mt-2">
-            <Link href={backPath}>Back to {entityType}s</Link>
+            <Link
+              href={backPath}
+              aria-label={`Back to ${entityType}s`
+              }>Back to {entityType}s</Link>
           </Button>
         </div>
       </CardFooter>

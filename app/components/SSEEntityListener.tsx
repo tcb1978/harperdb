@@ -1,5 +1,4 @@
 "use client";
-import { notFound } from "next/navigation";
 import { FC } from "react";
 import { useSSEEntities } from "../hooks/useSSEEntities";
 import JsonIDEBlock from "./JsonIDEBlock";
@@ -16,16 +15,14 @@ const SSEEntityListener: FC<SSEEntityListenerProps> = ({
 }) => {
   const entities = useSSEEntities(entityType);
 
-  if (!entities) {
-    notFound();
-  }
-
   return (
     <div className=''>
-      <h3 className="text-amber-300">
-        Live {title ?? entityType.charAt(0).toUpperCase() + entityType.slice(1)} Stream (SSE)
-      </h3>
-      <Separator className="my-4" />
+      {entities.length > 0 && (
+        <>
+          <h3 className="text-amber-300">Live {title ?? entityType.charAt(0).toUpperCase() + entityType.slice(1)} Stream (SSE)</h3>
+          <Separator className="my-4" />
+        </>
+      )}
       <JsonIDEBlock
         data={entities}
         emptyMessage={`No favorite ${entityType}`}

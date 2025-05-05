@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
+import { useMemo } from "react";
 import { EntityBackPath, EntityTitle } from "../enums";
 import BreadcrumbWithCustomSeparator from "./BreadcrumbWithCustomSeparator";
 import {
@@ -20,20 +21,24 @@ const IGNORED_SEGMENTS = ["favorites"];
 
 const Navigation: FC = () => {
   const pathname = usePathname();
-  const segments = pathname.split("/").filter(
-    (seg) => seg && !IGNORED_SEGMENTS.includes(seg)
+  const segments = useMemo(
+    () =>
+      pathname.split("/").filter((seg) => seg && !IGNORED_SEGMENTS.includes(seg)),
+    [pathname]
   );
-  const breadcrumbs = [
-    { label: EntityTitle.Home, href: EntityBackPath.Home },
-    ...segments.map((seg, idx) => {
-      const nav = NAV_LINKS.find((item) => item.href.replace("/", "") === seg);
-      const label = nav ? nav.label : decodeURIComponent(seg);
-      const href = "/" + segments.slice(0, idx + 1).join("/");
-      return idx < segments.length - 1
-        ? { label, href }
-        : { label };
-    }),
-  ];
+  type Breadcrumb = { label: string; href?: string; };
+  const breadcrumbs: Breadcrumb[] = useMemo(
+    () => [
+      { label: EntityTitle.Home, href: EntityBackPath.Home },
+      ...segments.map((seg, idx) => {
+        const nav = NAV_LINKS.find((item) => item.href.replace("/", "") === seg);
+        const label = nav ? nav.label : decodeURIComponent(seg);
+        const href = "/" + segments.slice(0, idx + 1).join("/");
+        return idx < segments.length - 1 ? { label, href } : { label };
+      }),
+    ],
+    [segments]
+  );
 
   return (
     <>
@@ -43,7 +48,11 @@ const Navigation: FC = () => {
             <NavigationMenuItem key={nav.href}>
               <Link
                 href={nav.href}
-                className="text-lg font-semibold text-white hover:text-amber-300 transition-colors"
+                className={`text-lg font-semibold transition-colors ${pathname.startsWith(nav.href)
+                  ? "text-amber-300"
+                  : "text-white hover:text-amber-300"
+                  }`}
+                aria-label='Navigation link'
               >
                 {nav.label}
               </Link>

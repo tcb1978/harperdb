@@ -1,6 +1,8 @@
 "use client";
 import { usePathname } from "next/navigation";
-import SSEEntityListener from "./SSEEntityListener";
+import React, { Suspense } from "react";
+
+const SSEEntityListener = React.lazy(() => import("./SSEEntityListener"));
 
 const entityTypes = ["characters", "locations", "episodes"] as const;
 
@@ -12,7 +14,9 @@ const DynamicSSEEntityListener = () => {
       <>
         {entityTypes.map((type) => (
           <section key={type}>
-            <SSEEntityListener entityType={type} />
+            <Suspense fallback={<div>Loading live stream...</div>}>
+              <SSEEntityListener entityType={type} />
+            </Suspense>
           </section>
         ))}
       </>
@@ -23,7 +27,9 @@ const DynamicSSEEntityListener = () => {
   if (found) {
     return (
       <section>
-        <SSEEntityListener entityType={found} />
+        <Suspense fallback={<div>Loading live stream...</div>}>
+          <SSEEntityListener entityType={found} />
+        </Suspense>
       </section>
     );
   }
