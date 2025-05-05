@@ -74,7 +74,7 @@ I created a custom endpoint that:
 
 You’ll find this logic in the custom API routes under `/api/characters`, `/api/locations`, and `/api/episodes`, where I merge local HarperDB data with external data from the Rick & Morty API.
 
-This approach lets HarperDB act as a flexible data orchestration layer, merging internal and external sources in a single API.
+This approach lets HarperDB act as a flexible data layer, merging internal and external sources in a single API.
 
 ---
 
