@@ -1,15 +1,15 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { FC, ReactNode, useCallback, useState } from "react";
-import { EntityBasePath, EntityRedirectPath } from "../enums";
+import { BasePath, RedirectPath } from "../enums";
 import { CharacterType, EpisodeType, LocationType } from "../types";
 import { Button } from "./ui/button";
 
 type GenericFavoriteButtonProps = {
   id: CharacterType["refId"] | LocationType["refId"] | EpisodeType["refId"];
   name: CharacterType["name"] | LocationType["name"] | EpisodeType["name"];
-  whichFavorite: (typeof EntityBasePath)[keyof typeof EntityBasePath];
-  redirectTo: (typeof EntityRedirectPath)[keyof typeof EntityRedirectPath];
+  whichFavorite: (typeof BasePath)[keyof typeof BasePath];
+  redirectTo: (typeof RedirectPath)[keyof typeof RedirectPath];
   method: "POST" | "DELETE";
   children: ReactNode;
   variant?: "default" | "destructive";

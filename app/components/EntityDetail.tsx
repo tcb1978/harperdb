@@ -1,9 +1,9 @@
 import Link from "next/link";
 import {
-  EntityBackPath,
-  EntityBasePath,
-  EntityRedirectPath,
-  EntityType
+  BackPath,
+  BasePath,
+  EntityType,
+  RedirectPath
 } from "../enums";
 import { CharacterType, EpisodeType, LocationType } from '../types';
 import GenericFavoriteButton from "./GenericFavoriteButton";
@@ -20,9 +20,9 @@ import { Label } from "./ui/label";
 type EntityDetailProps = {
   entity: CharacterType | EpisodeType | LocationType | null;
   entityType: typeof EntityType.Character | typeof EntityType.Location | typeof EntityType.Episode;
-  backPath: typeof EntityBackPath.Characters | typeof EntityBackPath.Locations | typeof EntityBackPath.Episodes;
+  backPath: typeof BackPath.Characters | typeof BackPath.Locations | typeof BackPath.Episodes;
   fields: string[];
-  redirectPath: typeof EntityRedirectPath.Characters | typeof EntityRedirectPath.Locations | typeof EntityRedirectPath.Episodes;
+  redirectPath: typeof RedirectPath.Characters | typeof RedirectPath.Locations | typeof RedirectPath.Episodes;
   children?: React.ReactNode;
 };
 
@@ -36,10 +36,10 @@ const EntityDetail: React.FC<EntityDetailProps> = ({
 }) => {
   if (!entity) return <p>{entityType} not found.</p>;
 
-  const entityTypeToBasePath: Record<typeof EntityType[keyof typeof EntityType], typeof EntityBasePath[keyof typeof EntityBasePath]> = {
-    [EntityType.Character]: EntityBasePath.Characters,
-    [EntityType.Location]: EntityBasePath.Locations,
-    [EntityType.Episode]: EntityBasePath.Episodes,
+  const entityTypeToBasePath: Record<typeof EntityType[keyof typeof EntityType], typeof BasePath[keyof typeof BasePath]> = {
+    [EntityType.Character]: BasePath.Characters,
+    [EntityType.Location]: BasePath.Locations,
+    [EntityType.Episode]: BasePath.Episodes,
   };
 
   return (

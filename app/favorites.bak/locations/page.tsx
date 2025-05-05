@@ -1,12 +1,12 @@
 import FavoriteListPage from "../../components/FavoriteListPage";
-import { EntityBasePath, EntityTitle } from "../../enums";
+import { BasePath, Title } from "../../enums";
 
 export default async function Page() {
   return (
     <FavoriteListPage
       apiUrl="/api/favorites/locations"
-      title={EntityTitle.Locations}
-      routeBase={EntityBasePath.Locations}
+      title={Title.Locations}
+      routeBase={BasePath.Locations}
     />
   );
 }

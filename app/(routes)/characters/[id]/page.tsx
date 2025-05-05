@@ -3,7 +3,7 @@ import { getCharacterById } from "actions";
 import EntityDetail from "components/EntityDetail";
 import { Avatar, AvatarFallback, AvatarImage } from "components/ui/avatar";
 import { Label } from "components/ui/label";
-import { EntityBackPath, EntityRedirectPath, EntityType } from "enums";
+import { BackPath, EntityType, RedirectPath } from "enums";
 import { notFound } from "next/navigation";
 import { CharacterType } from "types";
 
@@ -30,9 +30,9 @@ export default async function Page({ params: { id } }: PageProps) {
     <EntityDetail
       entityType={EntityType.Character}
       entity={character}
-      backPath={EntityBackPath.Characters}
+      backPath={BackPath.Characters}
       fields={["status", "species", "type", "gender"]}
-      redirectPath={EntityRedirectPath.Characters}
+      redirectPath={RedirectPath.Characters}
     >
       <Avatar>
         <AvatarImage src={character.image} alt={character.name} />

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
 import { useMemo } from "react";
-import { EntityBackPath, EntityTitle } from "../enums";
+import { BackPath, Title } from "../enums";
 import BreadcrumbWithCustomSeparator from "./BreadcrumbWithCustomSeparator";
 import {
   NavigationMenu,
@@ -12,9 +12,9 @@ import {
 } from "./ui/navigation-menu";
 
 const NAV_LINKS = [
-  { label: EntityTitle.Characters, href: EntityBackPath.Characters },
-  { label: EntityTitle.Locations, href: EntityBackPath.Locations },
-  { label: EntityTitle.Episodes, href: EntityBackPath.Episodes },
+  { label: Title.Characters, href: BackPath.Characters },
+  { label: Title.Locations, href: BackPath.Locations },
+  { label: Title.Episodes, href: BackPath.Episodes },
 ];
 
 const IGNORED_SEGMENTS = ["favorites"];
@@ -29,7 +29,7 @@ const Navigation: FC = () => {
   type Breadcrumb = { label: string; href?: string; };
   const breadcrumbs: Breadcrumb[] = useMemo(
     () => [
-      { label: EntityTitle.Home, href: EntityBackPath.Home },
+      { label: Title.Home, href: BackPath.Home },
       ...segments.map((seg, idx) => {
         const nav = NAV_LINKS.find((item) => item.href.replace("/", "") === seg);
         const label = nav ? nav.label : decodeURIComponent(seg);

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { EntityBasePath, EntityRedirectPath, EntityTitle } from "../enums";
+import { BasePath, RedirectPath, Title } from "../enums";
 import { EntityType } from "../types";
 import GenericFavoriteButton from "./GenericFavoriteButton";
 import JsonIDEBlock from "./JsonIDEBlock";
@@ -8,8 +8,8 @@ import { ScrollArea } from "./ui/scroll-area";
 
 type FavoriteListPageProps = {
   apiUrl: string;
-  title: typeof EntityTitle.Characters | typeof EntityTitle.Locations | typeof EntityTitle.Episodes;
-  routeBase: typeof EntityBasePath.Characters | typeof EntityBasePath.Locations | typeof EntityBasePath.Episodes;
+  title: typeof Title.Characters | typeof Title.Locations | typeof Title.Episodes;
+  routeBase: typeof BasePath.Characters | typeof BasePath.Locations | typeof BasePath.Episodes;
 };
 
 
@@ -42,7 +42,7 @@ const FavoriteListPage: FC<FavoriteListPageProps> = async ({
                 id={item.refId}
                 name={item.name}
                 whichFavorite={routeBase}
-                redirectTo={EntityRedirectPath[title]}
+                redirectTo={RedirectPath[title]}
                 method="DELETE"
               >
                 Remove {item.name}

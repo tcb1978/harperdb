@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { EntityBasePath, EntityTitle } from "../enums";
+import { BasePath, Title } from "../enums";
 import { CharacterType, EpisodeType, LocationType } from "../types";
 import { ScrollArea } from "./ui/scroll-area";
 
 type EntityListProps = {
-  title: typeof EntityTitle[keyof typeof EntityTitle];
+  title: typeof Title[keyof typeof Title];
   items: EpisodeType[] | CharacterType[] | LocationType[];
-  basePath: typeof EntityBasePath[keyof typeof EntityBasePath];
+  basePath: typeof BasePath[keyof typeof BasePath];
 };
 
 const EntityList: React.FC<EntityListProps> = ({

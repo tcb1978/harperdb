@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 import { getLocationById } from "actions";
 import EntityDetail from "components/EntityDetail";
-import { EntityBackPath, EntityRedirectPath, EntityType } from "enums";
+import { BackPath, EntityType, RedirectPath } from "enums";
 import { notFound } from "next/navigation";
 import { LocationType } from "types";
 
@@ -20,9 +20,9 @@ export default async function Page({ params: { id } }: PageProps) {
     <EntityDetail
       entity={location}
       entityType={EntityType.Location}
-      backPath={EntityBackPath.Locations}
+      backPath={BackPath.Locations}
       fields={["type", "dimension"]}
-      redirectPath={EntityRedirectPath.Locations}
+      redirectPath={RedirectPath.Locations}
     />
   );
 }
