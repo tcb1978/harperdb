@@ -35,7 +35,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "jest.config.js"
-, "app/(routes)/favorites/locations/route.ts.bak", "app/(routes)/favorites/episodes/route.ts.bak"  ],
+  ],
   "exclude": [
     "node_modules"
   ]
