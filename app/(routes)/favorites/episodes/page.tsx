@@ -1,8 +1,8 @@
 export const dynamic = "force-dynamic";
-import EpisodesByIDPage from "components/page/favorites/episodes/EpisodesByIDPage";
+import FavoriteEpisodes from "@/components/page/favorites/episodes/FavoriteEpisodes";
 
 export default function Page() {
   return (
-    <EpisodesByIDPage />
+    <FavoriteEpisodes />
   );
 }

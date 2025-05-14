@@ -1,11 +1,11 @@
 export const dynamic = "force-dynamic";
-import FavoriteListPage from "components/FavoriteListPage";
+import FavoriteList from "@/components/FavoriteList";
 import { BasePath, Title } from "enums";
 import { DOMAIN_URL } from "../../../../constants";
 
-const EpisodesByIDPage = () => {
+const FavoriteEpisodes = () => {
   return (
-    <FavoriteListPage
+    <FavoriteList
       apiUrl={`${DOMAIN_URL}/api/favorites/episodes`}
       title={Title.Episodes}
       routeBase={BasePath.Episodes}
@@ -13,4 +13,4 @@ const EpisodesByIDPage = () => {
   );
 };
 
-export default EpisodesByIDPage;
+export default FavoriteEpisodes;

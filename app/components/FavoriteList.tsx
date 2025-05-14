@@ -6,14 +6,14 @@ import JsonIDEBlock from "./JsonIDEBlock";
 import { ScrollArea } from "./ui/scroll-area";
 
 
-type FavoriteListPageProps = {
+type FavoriteListProps = {
   apiUrl: string;
   title: typeof Title.Characters | typeof Title.Locations | typeof Title.Episodes;
   routeBase: typeof BasePath.Characters | typeof BasePath.Locations | typeof BasePath.Episodes;
 };
 
 
-const FavoriteListPage: FC<FavoriteListPageProps> = async ({
+const FavoriteList: FC<FavoriteListProps> = async ({
   apiUrl,
   title,
   routeBase
@@ -55,4 +55,4 @@ const FavoriteListPage: FC<FavoriteListPageProps> = async ({
   );
 };
 
-export default FavoriteListPage;
+export default FavoriteList;

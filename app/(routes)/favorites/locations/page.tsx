@@ -1,8 +1,8 @@
 export const dynamic = "force-dynamic";
-import LocationByIDPage from "components/page/favorites/locations/LocationByIDPage";
+import FavoriteLocations from "@/components/page/favorites/locations/FavoriteLocations";
 
 export default function Page() {
   return (
-    <LocationByIDPage />
+    <FavoriteLocations />
   );
 }

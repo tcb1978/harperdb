@@ -1,8 +1,8 @@
 export const dynamic = "force-dynamic";
-import CharacterByIDPage from "components/page/favorites/characters/CharacterByIDPage";
+import FavoriteCharacters from "@/components/page/favorites/characters/FavoriteCharacters";
 
 export default function Page() {
   return (
-    <CharacterByIDPage />
+    <FavoriteCharacters />
   );
 }
