@@ -1,0 +1,48 @@
+2025 Harper Front End Engineer - Code
+Challenge
+Overview
+● The purpose of this challenge is for you to demonstrate familiarity with Node.js, and to
+act as a starting point for further conversation with you.
+● Be sure your solution highlights, and come prepared to discuss, the value Harper
+brings to this scenario.
+● We are not trying to trick you with this challenge, and we are not expecting that you
+submit a large and complex solution. Our intention is that you spend only a few hours
+on this challenge.
+Technical Challenge
+1. Read the docs on Harper Applications.
+2. Create a Harper Application that incorporates one or more external data sources. Free
+data sources include Open Weather API, NASA APIs, and Project Gutenberg, but feel
+free to use data sources of your choice.
+Application Requirements:
+● Define a GraphQL schema for a least 1 Harper table
+● Define a Harper Resource class with at least 1 custom endpoint
+○ Your custom endpoint must combine your local data with data from the
+external source
+
+● Implement working examples of at least 2 of Harper’s available interfaces: REST,
+MQTT, WS, or SSE.
+
+Here are some considerations that we might discuss:
+● The process of conceiving, designing and developing your application.
+● Required changes if this solution were scaled across multiple Harper nodes and
+multiple geographical regions?
+● Deployment process of this application across multiple instances.
+● Validating performance at scale.
+● Testing of the code.
+
+Submission
+To submit your code challenge solution, please ensure you have a GitHub account.
+● Share a public repository with us
+● During the technical interview please be ready to share your screen, discuss your
+solution, and impress our team!
+
+Resources:
+● https://www.npmjs.com/package/harperdb
+● harperdb/harperdb - Docker Image | Docker Hub
+● https://docs.harperdb.io/docs/developers/applications#custom-functionality-with-javascri
+pt
+● https://docs.harperdb.io/docs/developers/applications#define-custom-data-sources
+● https://docs.harperdb.io/docs/developers/real-time#real-time
+● https://github.com/HarperDB-Add-Ons
+● https://docs.harperdb.io/docs/developers/applications/debugging
+● HarperDB Community Slack: harperdbcommunity.slack.com
