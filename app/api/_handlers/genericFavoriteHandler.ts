@@ -65,26 +65,5 @@ export const genericFavoriteHandler = (type: "character" | "location" | "episode
       const data = await res.json();
       return NextResponse.json({ success: true, data });
     },
-
-    async PUT(req: Request) {
-      const { refId, name }: { refId: string; name: string } = await req.json();
-      const res = await fetch(HDB_URL, {
-        method: "POST",
-        headers,
-        body: JSON.stringify({
-          operation: "update",
-          schema: "data",
-          table: "Favorite",
-          records: [
-            {
-              id: `${type}-${refId}`,
-              name,
-            },
-          ],
-        }),
-      });
-      const data = await res.json();
-      return NextResponse.json({ success: true, data });
-    }
   };
 }
