@@ -35,8 +35,8 @@ type Episode @table @export {
 
 type Favorite @table @export {
   id: ID @primaryKey
-  type: String @indexed # "character", "location", or "episode"
-  refId: String @indexed # id of the favorited item
+  type: String @indexed
+  refId: String @indexed
   name: String
   rating: Int
   created: String
