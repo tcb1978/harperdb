@@ -66,6 +66,7 @@ async function seedEpisodes() {
 }
 
 seedEpisodes().catch(console.error);
+
 async function fetchAllLocations() {
   let allLocations = [];
   let url = "https://rickandmortyapi.com/api/location";
@@ -77,6 +78,7 @@ async function fetchAllLocations() {
   }
   return allLocations;
 }
+
 async function seedLocations() {
   const { tables } = await import("harperdb");
   const locations = await fetchAllLocations();
